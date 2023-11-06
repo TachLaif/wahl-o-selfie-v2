@@ -1,7 +1,7 @@
 # Wahl-O-Selfie - v2
 <a href="https://www.python.org/downloads/release/python-3120/"><img src="https://img.shields.io/badge/python-3.12.0-success?style=for-the-badge&logo=python&logoColor=white"></img></a>
 <img src="https://img.shields.io/badge/Last%20update-06.11.2023-blue?style=for-the-badge"></img> 
-<a href="https://github.com/TachLaif/wahl-o-selfie-v2/blob/main/LICENSE"><img src="https://img.shields.io/github/license/TachLaif/wahl-o-selfie-v2?style=for-the-badge"></img></a> 
+<a href="https://github.com/TachLaif/wahl-o-selfie-v2/blob/main/LICENSE"><img src="https://im.shields.io/github/license/TachLaif/wahl-o-selfie-v2?style=for-the-badge"></img></a> 
 
 ## Description
 Wahl-O-Selfie v2 is using facial recognition to categorize human faces into (german) political partys similar to "<a href="https://www.wahl-o-mat.de">Wahl-O-Mat</a>[^1]".
