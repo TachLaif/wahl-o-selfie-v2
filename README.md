@@ -63,7 +63,7 @@ Download the project as a _.zip file_ and unzip iton your machine. Then open **m
 
 After running the program a new file, called _result.jpg_ by default, apears in the program folder. In this picture you can see the face of a man surrounded by a rectangle with the predicted party below it, as seen here:
 
-<img src="https://github.com/TachLaif/wahl-o-selfie-v2/assets/104715363/4d765033-534a-4f5f-87f5-d59c47beedbf" width="384" height="384">
+<img src="https://github.com/TachLaif/wahl-o-selfie-v2/assets/104715363/519280b9-2ab4-4e3d-8c73-2d5bc5c14fe1" width="384" height="384">
 
 If you want to try the program on one of your pictures you have to copy it into the program directory and either rename it to _testimage.jpg_ (if your picture is a jpg file) or you have to change the first parameter in the last line in the _main.py_ file:
 
@@ -73,7 +73,7 @@ predictParty('testimage.jpg', 'result.jpg', False)
 
 The first parameter ('testimage.jpg') is the picture that will be loaded to be analyzed. The second parameter ('result.jpg') is the name of the picture that will be saved after the analyzation. The third parameter (which is currently set to False) determines if the program should print (cool looking) lines inbetween the face landmarks which are used to identify the faces. These lines look like this:
 
-<img src="https://github.com/TachLaif/wahl-o-selfie-v2/assets/104715363/9c2c3c15-724f-4480-bc81-73459a29f909" width="384" height="384">
+<img src="https://github.com/TachLaif/wahl-o-selfie-v2/assets/104715363/86f74da2-2ac4-4ae0-a162-3733adb924de" width="384" height="384">
 
 cool, eh?
 
