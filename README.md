@@ -73,7 +73,7 @@ predictParty('testimage.jpg', 'result.jpg', False)
 
 The first parameter ('testimage.jpg') is the picture that will be loaded to be analyzed. The second parameter ('result.jpg') is the name of the picture that will be saved after the analyzation. The third parameter (which is currently set to False) determines if the program should print (cool looking) lines inbetween the face landmarks which are used to identify the faces. These lines look like this:
 
-<img src="https://github.com/TachLaif/wahl-o-selfie-v2/assets/104715363/9c2c3c15-724f-4480-bc81-73459a29f909" widht="384" height="384">
+<img src="https://github.com/TachLaif/wahl-o-selfie-v2/assets/104715363/9c2c3c15-724f-4480-bc81-73459a29f909" width="384" height="384">
 
 cool, eh?
 
