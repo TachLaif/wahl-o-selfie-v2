@@ -22,8 +22,8 @@ def predictParty(inputImage:str, outputImage:str = 'result.jpg', showFaceLandmar
     
     pil_image = Image.fromarray(picture)
 
-    face_landmarks_list = face_recognition.face_landmarks(picture, face_locations, 'large')
     if showFaceLandmarks:
+        face_landmarks_list = face_recognition.face_landmarks(picture, face_locations, 'large')
         for face_landmarks in face_landmarks_list:
             draw = ImageDraw.Draw(pil_image)
             for facial_feature in face_landmarks.keys():
