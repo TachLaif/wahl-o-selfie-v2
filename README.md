@@ -83,7 +83,74 @@ You can also create your own dataset to be used to identify people. More instruc
 
 ## How it works
 
-W.I.P
+After running the 'predictParty' function the program procedes to run the 'loadKnown' function in 'prepare_faces.py'. The 'loadKnown' function then checks if the three required files 'face_data/encodings.dat', 'face_data/names.dat' and 'face_data/partys.dat' exist. If they exist the program loads the variables saved in these files, which contain the required informations needed by the program to identify and associated the correct names and partys to the faces it finds in the picture. If the program does not find the required files it will try to generte them based on the directory structure in 'face_data/raw/'. Currently, however, this would not work, as there is no compatible folder structure present by default.
+
+```python
+    picture = face_recognition.load_image_file(inputImage)
+    face_locations = face_recognition.face_locations(picture)
+    face_encodings = face_recognition.face_encodings(picture, face_locations, model = 'large')
+```
+
+In these lines the program loads the image it has to process and identifies the locations of the faces present in the picture and their corresponding encoding, which are stored in the variables 'face_locations' and 'face_encodings'. 'face_locations' is relatively self explanatory, 'face_encodings' is a list containing the data needed (and provided) by the library I use for the facial recognition stuff. Basicaly the library converts the facial points in the picture of each face into some number values which it then can use to check how similar two faces are. In the 'face_data/encodings.dat' file are the encodings of the politicians used in the model. Please note the extra parameter 'model = 'large'' which tells the library that it should used more points per face which makes the overall recognition part more accurate.
+
+```python
+pil_image = Image.fromarray(picture)
+```
+
+With this line the program converts the previously opened picture to a format with which I can edit using pillow. This will be used to draw the rectangle and the optional face landmarks on the picture.
+
+Speaking of face landmarks, this code executes if the optional 'showFaceLandmarks' parameter in the function is set to _True_:
+
+```python
+if showFaceLandmarks:
+        face_landmarks_list = face_recognition.face_landmarks(picture, face_locations, 'large')
+        for face_landmarks in face_landmarks_list:
+            draw = ImageDraw.Draw(pil_image)
+            for facial_feature in face_landmarks.keys():
+                draw.line(face_landmarks[facial_feature], width=2, fill = (255, 0, 0))
+            del draw
+```
+
+This code is responsible for drawing these cool looking red lines connecting the points used by the library to determine how a face looks.
+
+The following for-loop goes through each face located in the image and analyzes the current face. 
+
+```python
+matches = face_recognition.compare_faces(known_face_encodings, face_encodings, tolerance = 0.5)
+similar = face_recognition.face_distance(known_face_encodings, face_encodings)
+```
+
+The first line determines if the currently processed face is of one of the party members in which case the program will show the name and the party the face belongs to. This is happening in the following lines 
+
+```python
+if True in matches:
+            first_match_index = matches.index(True)
+            information = known_face_names[first_match_index] + ' - ' + known_face_partys[first_match_index]
+```
+
+The second line, however, determines how similar the face is to the faces in the model. 
+
+```python
+list = similar.tolist()
+lowest_match_index = list.index(min(list))
+information = known_face_partys[lowest_match_index]
+```
+
+With this code it converts the similarity values to a list and finds the element with the lowest similarity value, as this is the one that looks the most like the face that is currently processed in the for-loop. 
+
+```python
+draw = ImageDraw.Draw(pil_image)
+draw.rectangle(((left, top), (right, bottom)), outline = (0, 255, 255), width = 5)
+draw.rectangle(((left, bottom), (right, bottom + 21)), fill = (0, 0, 0), outline = (0, 0, 0), width = 5)
+draw.text((left + 6, bottom + 6), information, fill = (255, 255, 255))
+del draw
+```
+
+Finally, it draws the box around the face and a rectangle below it in which it writes the name and/or the party the face corresponds to. And saves the image to the designated location and file name.
+
+```python
+pil_image.save(outputImage)
+```
 
 ## Problems 
 
